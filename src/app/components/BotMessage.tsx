@@ -14,8 +14,6 @@ export function BotMessage({ content, showCopy = false }: { content: string, sho
     });
   }
 
-
-  // This function extracts thinking messages from the content, and retuns the thinking message and the content without the thinking tags.
   const extractThinking = (content: string) => {
     const startThinking = content.includes("<think>");
     const endThinking = content.includes("</think>");
@@ -33,9 +31,6 @@ export function BotMessage({ content, showCopy = false }: { content: string, sho
 
   const startThinking = content.includes("<think>");
   const endThinking = content.includes("</think>");
-
-  console.log('startThinking:', startThinking);
-  console.log('endThinking:', endThinking);
 
   if (startThinking && !endThinking) {
     return <LoadingBaloon message="Thinking..." />;
