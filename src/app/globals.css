@@ -44,58 +44,86 @@ body {
   box-shadow: -4px 0, 4px 0, 4px 4px #bfdbfe, 0 4px, 8px 4px, 4px 8px, 8px 8px
 }
 
-p,
-ul,
-ol {
+.nes-balloon p,
+.nes-ballong ul,
+.nes-balloon ol {
   margin-bottom: 1rem;
   line-height: 1.5;
 }
 
-code {
-  font-size: 0.9rem;
-  padding: 0.2rem 0.4rem;
-  background: #ccc;
+.nes-balloon pre {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  overflow-x: scroll;
+  width: 100%;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.nes-balloon code {
+  font-size: 0.9rem;
+  padding: 0.2rem 0.4rem;
+}
+
+.nes-balloon h1,
+.nes-balloon h2,
+.nes-balloon h3,
+.nes-balloon h4,
+.nes-balloon h5,
+.nes-balloon h6 {
   font-weight: bold;
   margin: 1rem 0;
 }
 
-h1 {
+.nes-balloon a {
+  color: rgb(32, 156, 238);
+}
+
+.nes-balloon a:hover {
+  text-decoration: underline;
+}
+
+.nes-balloon hr {
+  background-color: #222;
+  height: 4px;
+  margin: 16px 0;
+  border: none;
+}
+
+.nes-balloon h1 {
   font-size: 2.5rem;
+  color: rgb(32, 156, 238);
 }
 
-h2 {
+.nes-balloon h2 {
   font-size: 2rem;
+  color: #333;
 }
 
-h3 {
+.nes-balloon h3 {
   font-size: 1.75rem;
+  color: #444;
 }
 
-h4 {
+.nes-balloon h4 {
   font-size: 1.5rem;
+  color: #555;
 }
 
-h5 {
+.nes-balloon h5 {
   font-size: 1.25rem;
+  color: #666;
 }
 
-h6 {
+.nes-balloon h6 {
   font-size: 1rem;
+  color: #777;
 }
 
-li {
+.nes-balloon li {
   margin-bottom: 1rem;
   list-style-type: square;
 }
 
-li>ul {
+.nes-balloon li>ul {
   margin-left: 1rem;
 }

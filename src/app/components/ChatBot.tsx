@@ -82,6 +82,15 @@ function ChatBot() {
 
       if (!response.body) throw new Error('No response body');
 
+      if (response.status === 413) {
+        setMessages(prev => prev.map(msg =>
+          msg.id === botMessage.id
+            ? { ...msg, content: 'Error: Message too long' }
+            : msg
+        ));
+        return;
+      }
+
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let done = false;

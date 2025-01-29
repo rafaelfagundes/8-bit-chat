@@ -39,14 +39,14 @@ export function BotMessage({ content, showCopy = false }: { content: string, sho
   const { thinking, newContent } = extractThinking(content);
 
   return (
-    <section className="message -left">
+    <section className="message -left max-w-[95%]">
       <div className="nes-balloon from-left max-w-full">
-        <div className="p-4 bg-gray-200 mb-8 flex-col flex">
+        {thinking !== "" && <div className="p-4 bg-gray-200 mb-8 flex-col flex">
           <button className="nes-btn is-warning w-80" onClick={() => setShowThinking(!showThinking)}>Toggle Thinking</button>
           {showThinking && <ReactMarkdown className="p-4" remarkPlugins={[remarkGfm]}>{thinking}</ReactMarkdown>}
-        </div>
+        </div>}
         <ReactMarkdown remarkPlugins={[remarkGfm]} className={`${showCopy ? "mb-8" : ""}`}>{newContent}</ReactMarkdown>
-        {showCopy && <button type="submit" className="nes-btn is-success absolute right-0 bottom-1 text-xs" onClick={() => copyText(content)}>Copy</button>}
+        {showCopy && <button type="submit" className="nes-btn is-success absolute right-0 bottom-1 text-xs" onClick={() => copyText(newContent)}>Copy</button>}
       </div>
     </section>
   );

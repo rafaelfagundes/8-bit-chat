@@ -3,7 +3,7 @@ export function ChatHeader() {
     <div className="flex flex-row items-center justify-between w-full -mt-4">
       <div className='flex flex-row items-center space-x-3'>
         <i className="nes-icon star is-medium"></i>
-        <h1 className='pt-2'>
+        <h1 className='pt-2 text-md sm:text-lg'>
           8-bit Chat
         </h1>
       </div>
