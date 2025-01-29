@@ -12,6 +12,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      backgroundImage: {
+        "game": "url('/img/bg.svg')"
+      },
     },
   },
   plugins: [],

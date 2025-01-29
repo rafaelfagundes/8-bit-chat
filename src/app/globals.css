@@ -1,3 +1,4 @@
+@import url("nes.css/css/nes.min.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,8 +15,87 @@
   }
 }
 
+* {
+  border-image-repeat: stretch !important;
+  font-family: "Press Start 2P", monospace !important;
+
+  @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    border-image-repeat: stretch !important;
+  }
+
+  @supports (-moz-appearance: meterbar) {
+    border-image-repeat: stretch !important;
+  }
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.nes-balloon.from-right.bg-blue-200::before,
+.nes-balloon.from-right.bg-blue-200::after {
+  background-color: rgb(191 219 254);
+  border-bottom-color: rgb(191 219 254);
+}
+
+.nes-balloon.from-right:after {
+  box-shadow: -4px 0, 4px 0, 4px 4px #bfdbfe, 0 4px, 8px 4px, 4px 8px, 8px 8px
+}
+
+p,
+ul,
+ol {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+code {
+  font-size: 0.9rem;
+  padding: 0.2rem 0.4rem;
+  background: #ccc;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+li {
+  margin-bottom: 1rem;
+  list-style-type: square;
+}
+
+li>ul {
+  margin-left: 1rem;
 }
