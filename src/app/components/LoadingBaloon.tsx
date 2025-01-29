@@ -1,4 +1,4 @@
-export function LoadingBaloon({ message = "..." }: { message: string }) {
+export function LoadingBaloon({ message = "..." }: { message?: string }) {
   return (
     <section className="message -left">
       <div className="nes-balloon from-left">
