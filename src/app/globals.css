@@ -16,6 +16,13 @@
   }
 }
 
+/* iOS-specific styles */
+@media (prefers-color-scheme: dark) {
+  .dark {
+    @apply bg-gray-900 text-white;
+  }
+}
+
 * {
   border-image-repeat: stretch !important;
   font-family: "Press Start 2P", monospace !important;

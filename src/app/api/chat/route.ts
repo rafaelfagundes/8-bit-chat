@@ -10,12 +10,8 @@ const openai = new OpenAI({
 });
 
 export async function POST(req: NextRequest) {
-  console.log("apiKey", process.env.API_KEY);
-  console.log("model", process.env.MODEL);
-  console.log("apiUrl", process.env.API_URL);
   try {
     const { message } = await req.json();
-    console.log("message", message);
     if (!message) {
       return new Response(
         JSON.stringify({ error: 'Message is required' }),

@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <h1>🎮 8-bit Chat</h1>
+  <p>A retro-styled AI chat interface that brings nostalgia to modern conversations</p>
+  
+  [![NextJS](https://img.shields.io/badge/Next.js-black?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)](https://openai.com/)
+  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+</div>
 
-## Getting Started
+## ✨ Features
 
-First, run the development server:
+- 🎨 Authentic 8-bit design using NES.css framework
+- 🤖 Advanced AI chat capabilities powered by OpenAI SDK-compatible APIs (DeepSeek R1 DeepThink included)
+- 📝 Real-time response streaming
+- 🖥️ Responsive design with adjustable window scaling
+- ⌨️ Keyboard shortcuts support
+- 💭 AI thinking process visualization
+- 📋 One-click message copying
+
+## 🚀 Quick Start
+
+1. **Clone and Install**
+
+```bash
+git clone https://github.com/rafaelfagundes/8-bit-chat.git
+cd 8-bit-chat
+npm install
+```
+
+2. **Set up Environment Variables**
+
+```bash
+cp .env.example .env.local
+# Add your API key (GPT, Gemini, DeepSeek, OpenRouter, Groq, etc.) to .env.local
+```
+
+3. **Run Development Server**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js 13+, React, TypeScript
+- **Styling**: TailwindCSS, NES.css
+- **AI Integration**: OpenAI GPT API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎯 Key Features Explained
 
-## Learn More
+### Real-time Response Streaming
 
-To learn more about Next.js, take a look at the following resources:
+- See AI responses as they're generated
+- Smooth typing animation effect
+- Progress indicators for long responses
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Retro UI Elements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 8-bit styled buttons and containers
+- Pixelated fonts and icons
+- Nostalgic color palette
+- Responsive scaling options
 
-## Deploy on Vercel
+### AI Capabilities
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Natural conversation flow
+- Markdown support for formatted responses
+- Thinking process visualization
+- Context-aware responses
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📖 Usage
+
+### Keyboard Shortcuts
+
+- `Cmd/Ctrl + Enter` - Send message
+- `Escape` - Close options panel
+- `Cmd/Ctrl + K` - Clear chat
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgements
+
+- [NES.css](https://nostalgic-css.github.io/NES.css/) for the retro styling
+- [Press Start 2P Font](https://fonts.google.com/specimen/Press+Start+2P) for the authentic 8-bit typography
+- [OpenAI](https://openai.com/) for the powerful chat capabilities
