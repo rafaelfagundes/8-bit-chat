@@ -6,6 +6,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  font-size: 16px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -47,6 +48,7 @@ body {
 .nes-balloon p,
 .nes-ballong ul,
 .nes-balloon ol {
+  font-size: 0.75rem;
   margin-bottom: 1rem;
   line-height: 1.5;
 }
@@ -60,8 +62,8 @@ body {
 }
 
 .nes-balloon code {
-  font-size: 0.9rem;
-  padding: 0.2rem 0.4rem;
+  font-size: 0.75rem;
+  /* padding: 0.2rem 0.4rem; */
 }
 
 .nes-balloon h1,
@@ -71,7 +73,7 @@ body {
 .nes-balloon h5,
 .nes-balloon h6 {
   font-weight: bold;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
 }
 
 .nes-balloon a {
@@ -90,36 +92,37 @@ body {
 }
 
 .nes-balloon h1 {
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   color: rgb(32, 156, 238);
 }
 
 .nes-balloon h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #333;
 }
 
 .nes-balloon h3 {
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   color: #444;
 }
 
 .nes-balloon h4 {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #555;
 }
 
 .nes-balloon h5 {
-  font-size: 1.25rem;
+  font-size: 0.75rem;
   color: #666;
 }
 
 .nes-balloon h6 {
-  font-size: 1rem;
+  font-size: 0.75rem;
   color: #777;
 }
 
 .nes-balloon li {
+  font-size: 0.75rem;
   margin-bottom: 1rem;
   list-style-type: square;
 }

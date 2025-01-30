@@ -10,7 +10,7 @@ function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [scale, setScale] = useState(0.75);
+  const [scale, setScale] = useState(1);
   const [showOptions, setShowOptions] = useState(false);
   const [showCopy, setShowCopy] = useState(false);
 
@@ -144,28 +144,51 @@ function ChatBot() {
   };
 
   return (
-    <div className='nes-container is-rounded max-w-5xl text-black w-full bg-gray-200'
-      style={{
-        transform: `scale(${scale})`,
-        transformOrigin: 'center center',
-        transition: 'transform 0.5s',
-        margin: '0 auto',
-      }}
-    >
-      <div className='h-32'></div>
-      <ChatHeader />
-      {showOptions &&
-        (<ChatOptions
-          scale={scale}
-          setScale={setScale}
-          setShowOptions={setShowOptions}
-        />)}
-      {messages.length === 0 && !showOptions && <ChatEmpty setQuestion={setQuestion} />}
-      {!showOptions && <>
-        <ChatMessageList messages={messages} isLoading={isLoading} messagesEndRef={messagesEndRef} showCopy={showCopy} handleClearMessages={handleClearMessages} />
-        <ChatInput input={input} setInput={setInput} handleSubmit={handleSubmit} setShowOptions={setShowOptions} showOptions={showOptions} />
-      </>
-      }
+    <div className=''>
+      <div className='hidden sm:block w-screen h-screen'>
+        {/* <div className='max-w-5xl text-black max-h-screen bg-gray-200' */}
+        <div className='flex flex-col text-black justify-center items-center h-full'
+          style={{
+            transform: `scale(${scale})`,
+            transformOrigin: 'center center',
+            transition: 'transform 0.5s',
+            margin: '0 auto',
+          }}
+        >
+          <div className='nes-container is-rounded bg-gray-200 h-full flex flex-col justify-between max-h-[95vh] max-w-[1000px] w-full'>
+            {showOptions &&
+              (
+                <div>
+                  <ChatHeader />
+                  <div className="h-12"></div>
+                  <ChatOptions
+                    scale={scale}
+                    setScale={setScale}
+                    setShowOptions={setShowOptions}
+                  />
+                </div>
+              )}
+            {!showOptions && <ChatHeader />}
+            {messages.length === 0 && !showOptions && <ChatEmpty setQuestion={setQuestion} />}
+            {!showOptions && <>
+              {messages.length > 0 && <ChatMessageList messages={messages} isLoading={isLoading} messagesEndRef={messagesEndRef} showCopy={showCopy} handleClearMessages={handleClearMessages} />}
+              <ChatInput input={input} setInput={setInput} handleSubmit={handleSubmit} setShowOptions={setShowOptions} showOptions={showOptions} />
+            </>
+            }
+          </div>
+        </div>
+      </div>
+      <div className="block sm:hidden bg-gray-200 w-screen h-screen">
+        <div className='flex flex-col text-black bg-gray-200 justify-between h-full'>
+          <ChatHeader />
+          {messages.length === 0 && !showOptions && <ChatEmpty setQuestion={setQuestion} />}
+          {!showOptions && <>
+            {messages.length > 0 && <ChatMessageList messages={messages} isLoading={isLoading} messagesEndRef={messagesEndRef} showCopy={showCopy} handleClearMessages={handleClearMessages} />}
+            <ChatInput input={input} setInput={setInput} handleSubmit={handleSubmit} setShowOptions={setShowOptions} showOptions={showOptions} />
+          </>
+          }
+        </div>
+      </div>
     </div>
   )
 }

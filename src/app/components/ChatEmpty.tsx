@@ -76,16 +76,17 @@ export function ChatEmpty({ setQuestion }: ChatEmptyProps) {
   }, []); // Empty dependency array means this runs once on mount
 
   return (
-    <div className="nes-container is-rounded flex flex-col items-center justify-center bg-white">
-      <i className="nes-bcrikko mt-8"></i>
-      <h1 className="nes-text text-2xl mb-4 mt-6">Start a conversation!</h1>
-      <h2 className="nes-text text-xl mb-8">Try one of these questions</h2>
-      <ul className="nes-list is-disc px-16">
-        {randomQuestions.map((question, index) => (
-          <li key={index} className="nes-text text-sm mb-2 is-primary hover:underline" onClick={() => setQuestion(question)}>{question}</li>
-        ))}
-      </ul>
-
+    <div className="p-2">
+      <div className="nes-container is-rounded flex flex-col items-center justify-center bg-white">
+        <i className="nes-bcrikko -mt-8 -mb-8 sm:mt-8 sm:mb-8 scale-50 sm:scale-100"></i>
+        <h1 className="nes-text text-sm sm:text-2xl mb-4 mt-6 text-center">Start a conversation!</h1>
+        <h2 className="nes-text text-xs sm:text-xl mb-8 text-center">Try one of these questions</h2>
+        <ul className="nes-list is-disc px-2 sm:px-16">
+          {randomQuestions.map((question, index) => (
+            <li key={index} className="nes-text text-xs sm:text-sm mb-2 is-primary hover:underline" onClick={() => setQuestion(question)}>{question}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }

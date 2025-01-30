@@ -27,20 +27,18 @@ export function ChatMessageList({
   handleClearMessages
 }: ChatMessageListProps) {
   return (
-    <div>
-      <section className="message-list overflow-y-scroll  max-h-[85vh] pb-8">
-        {messages.map((message) => {
-          if (message.isBot) {
-            return <BotMessage showCopy={showCopy} key={message.id} content={message.content} />;
-          }
-          else {
-            return <UserMessage key={message.id} content={message.content} />;
-          }
-        })}
-        {isLoading && <LoadingBaloon />}
-        <div ref={messagesEndRef} />
-        {messages.length > 0 && <ClearMessagesButton handleClearMessages={handleClearMessages} />}
-      </section>
-    </div>
+    <section className="message-list overflow-y-scroll flex flex-col h-full px-1">
+      {messages.map((message) => {
+        if (message.isBot) {
+          return <BotMessage showCopy={showCopy} key={message.id} content={message.content} />;
+        }
+        else {
+          return <UserMessage key={message.id} content={message.content} />;
+        }
+      })}
+      {isLoading && <LoadingBaloon />}
+      <div ref={messagesEndRef} />
+      {messages.length > 0 && <ClearMessagesButton handleClearMessages={handleClearMessages} />}
+    </section>
   )
 }

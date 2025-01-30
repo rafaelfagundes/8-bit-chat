@@ -12,8 +12,8 @@ export function ChatOptions({ scale, setScale, setShowOptions }: ChatOptionsProp
         <p className="title">Window Size</p>
         <div className='flex flex-row space-x-4'>
           <button className={`nes-btn ${scale === 0.5 ? "is-success" : "is-secondary"}`} onClick={() => setScale(0.5)}>Small</button>
-          <button className={`nes-btn ${scale === 0.75 ? "is-success" : "is-secondary"}`} onClick={() => setScale(0.75)}>Default</button>
-          <button className={`nes-btn ${scale === 1 ? "is-success" : "is-secondary"}`} onClick={() => setScale(1)}>Large</button>
+          <button className={`nes-btn ${scale === 1 ? "is-success" : "is-secondary"}`} onClick={() => setScale(1)}>Default</button>
+          <button className={`nes-btn ${scale === 1.5 ? "is-success" : "is-secondary"}`} onClick={() => setScale(1.5)}>Large</button>
         </div>
       </div>
       <hr className='h-1 bg-black my-4' />
