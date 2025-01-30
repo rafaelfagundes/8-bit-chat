@@ -4,6 +4,7 @@ import { ChatOptions } from './ChatOptions';
 import { ChatInput } from './ChatInput';
 import { ChatHeader } from './ChatHeader';
 import { ChatMessageList, Message } from './ChatMessageList';
+import { ChatEmpty } from './ChatEmpty';
 
 function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -47,15 +48,23 @@ function ChatBot() {
     };
   });
 
+  const setQuestion = (question: string) => {
+    handleSubmit(null, question);
+  }
 
-  const handleSubmit = async (e: React.FormEvent | KeyboardEvent) => {
-    e.preventDefault();
-    if (!input.trim()) return;
+  const handleSubmit = async (e: React.FormEvent | KeyboardEvent | null, question?: string) => {
+    if (e) {
+      e.preventDefault();
+    }
+
+    const finalInput = question || input;
+
+    if (!finalInput.trim()) return;
 
     // Add user message
     const userMessage: Message = {
       id: Date.now(),
-      content: input,
+      content: finalInput,
       isBot: false
     };
     setMessages(prev => [...prev, userMessage]);
@@ -76,7 +85,7 @@ function ChatBot() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ message: finalInput }),
       });
       setIsLoading(false);
 
@@ -135,7 +144,7 @@ function ChatBot() {
   };
 
   return (
-    <div className='nes-container is-rounded bg-white max-w-5xl text-black w-full'
+    <div className='nes-container is-rounded max-w-5xl text-black w-full bg-gray-200'
       style={{
         transform: `scale(${scale})`,
         transformOrigin: 'center center',
@@ -143,6 +152,7 @@ function ChatBot() {
         margin: '0 auto',
       }}
     >
+      <div className='h-32'></div>
       <ChatHeader />
       {showOptions &&
         (<ChatOptions
@@ -150,6 +160,7 @@ function ChatBot() {
           setScale={setScale}
           setShowOptions={setShowOptions}
         />)}
+      {messages.length === 0 && !showOptions && <ChatEmpty setQuestion={setQuestion} />}
       {!showOptions && <>
         <ChatMessageList messages={messages} isLoading={isLoading} messagesEndRef={messagesEndRef} showCopy={showCopy} handleClearMessages={handleClearMessages} />
         <ChatInput input={input} setInput={setInput} handleSubmit={handleSubmit} setShowOptions={setShowOptions} showOptions={showOptions} />

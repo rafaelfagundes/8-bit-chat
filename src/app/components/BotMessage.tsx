@@ -41,12 +41,19 @@ export function BotMessage({ content, showCopy = false }: { content: string, sho
   return (
     <section className="message -left max-w-[95%]">
       <div className="nes-balloon from-left max-w-full">
-        {thinking !== "" && <div className="p-4 bg-gray-200 mb-8 flex-col flex">
-          <button className="nes-btn is-warning w-80" onClick={() => setShowThinking(!showThinking)}>Toggle Thinking</button>
-          {showThinking && <ReactMarkdown className="p-4" remarkPlugins={[remarkGfm]}>{thinking}</ReactMarkdown>}
-        </div>}
-        <ReactMarkdown remarkPlugins={[remarkGfm]} className={`${showCopy ? "mb-8" : ""}`}>{newContent}</ReactMarkdown>
-        {showCopy && <button type="submit" className="nes-btn is-success absolute right-0 bottom-1 text-xs" onClick={() => copyText(newContent)}>Copy</button>}
+        {thinking !== "" && (
+          <>
+            {!showThinking && <button className="nes-btn is-warning w-60 text-xs" onClick={() => setShowThinking(true)}>Show Thinking</button>}
+            {showThinking && <div className="nes-container is-rounded bg-gray-200">
+              <button className="nes-btn is-warning w-60 text-xs" onClick={() => setShowThinking(false)}>Hide Thinking</button>
+              <ReactMarkdown className="pt-4" remarkPlugins={[remarkGfm]}>{thinking}</ReactMarkdown>
+            </div>}
+            <div className="h-6"></div>
+          </>
+        )}
+
+        <ReactMarkdown remarkPlugins={[remarkGfm]} className={`${showCopy ? "mb-10" : ""}`}>{newContent}</ReactMarkdown>
+        {showCopy && <button type="submit" className="nes-btn is-success absolute -right-2 -bottom-1 text-xs" onClick={() => copyText(newContent)}>Copy</button>}
       </div>
     </section>
   );

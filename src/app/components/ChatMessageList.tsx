@@ -28,7 +28,7 @@ export function ChatMessageList({
 }: ChatMessageListProps) {
   return (
     <div>
-      <section className="message-list overflow-y-scroll min-h-[65vh] max-h-[85vh] pb-8 ">
+      <section className="message-list overflow-y-scroll  max-h-[85vh] pb-8">
         {messages.map((message) => {
           if (message.isBot) {
             return <BotMessage showCopy={showCopy} key={message.id} content={message.content} />;
