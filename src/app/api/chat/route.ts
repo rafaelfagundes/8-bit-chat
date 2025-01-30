@@ -1,11 +1,11 @@
-import { NextRequest } from 'next/server';
-import OpenAI from 'openai';
+import { NextRequest } from "next/server";
+import OpenAI from "openai";
 
 // export const runtime = 'edge';
 
 // Initialize the OpenAI client with custom base URL
 const openai = new OpenAI({
-  apiKey: process.env.API_KEY,
+  apiKey: process.env.OPENAI_API_KEY || process.env.API_KEY || "My API Key", // Just to not break the buildw
   baseURL: process.env.API_URL,
 });
 
@@ -13,21 +13,22 @@ export async function POST(req: NextRequest) {
   try {
     const { message } = await req.json();
     if (!message) {
-      return new Response(
-        JSON.stringify({ error: 'Message is required' }),
-        {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
+      return new Response(JSON.stringify({ error: "Message is required" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+      });
     }
 
     const stream = await openai.chat.completions.create({
       model: process.env.MODEL!,
       messages: [
-        { role: 'system', content: 'You are a helpful assistant. Always return using Markdown. Add new lines to separate subjects.' },
+        {
+          role: "system",
+          content:
+            "You are a helpful assistant. Always return using Markdown. Add new lines to separate subjects.",
+        },
 
-        { role: 'user', content: message },
+        { role: "user", content: message },
       ],
       stream: true,
     });
@@ -38,7 +39,7 @@ export async function POST(req: NextRequest) {
         try {
           for await (const chunk of stream) {
             // Get the delta content from the chunk
-            const content = chunk.choices[0]?.delta?.content || '';
+            const content = chunk.choices[0]?.delta?.content || "";
 
             // Create a proper SSE message
             if (content) {
@@ -48,10 +49,10 @@ export async function POST(req: NextRequest) {
             }
           }
           // Send the [DONE] message when the stream is complete
-          controller.enqueue(new TextEncoder().encode('data: [DONE]\n\n'));
+          controller.enqueue(new TextEncoder().encode("data: [DONE]\n\n"));
           controller.close();
         } catch (error) {
-          console.error('Error streaming response:', error);
+          console.error("Error streaming response:", error);
           controller.error(error);
         }
       },
@@ -60,15 +61,15 @@ export async function POST(req: NextRequest) {
     // Return the response with proper headers
     return new Response(readableStream, {
       headers: {
-        'Content-Type': 'text/event-stream',
-        'Cache-Control': 'no-cache, no-transform',
-        'Connection': 'keep-alive',
-        'Access-Control-Allow-Origin': '*',
-        'X-Accel-Buffering': 'no',
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache, no-transform",
+        Connection: "keep-alive",
+        "Access-Control-Allow-Origin": "*",
+        "X-Accel-Buffering": "no",
       },
     });
   } catch (error) {
-    console.error('API Error:', error);
+    console.error("API Error:", error);
     if (error instanceof OpenAI.APIError) {
       return new Response(
         JSON.stringify({
@@ -78,17 +79,17 @@ export async function POST(req: NextRequest) {
         }),
         {
           status: error.status || 500,
-          headers: { 'Content-Type': 'application/json' },
+          headers: { "Content-Type": "application/json" },
         }
       );
     }
     return new Response(
       JSON.stringify({
-        error: 'Internal server error',
+        error: "Internal server error",
       }),
       {
         status: 500,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
       }
     );
   }

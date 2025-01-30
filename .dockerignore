@@ -1,0 +1,16 @@
+node_modules
+.next
+.git
+.env
+.env.local
+.env*.local
+*.log
+README.md
+.DS_Store
+.vscode
+coverage
+dist
+build
+
+# Allow env example file
+!.env.example
